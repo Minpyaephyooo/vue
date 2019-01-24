@@ -1,0 +1,17 @@
+       search
+       computed:{
+            filteredBlog:function () {
+                return this.blogs.filter((blog) => {
+                    return blog.title.match(this.search)
+                })
+            }
+        },
+        
+        json file
+        created() {
+            this.$http.get('https://jsonplaceholder.typicode.com/posts').then(function (data) {
+                console.log(data);
+                this.blogs = data.body.slice(0,10)
+            })
+
+        }
